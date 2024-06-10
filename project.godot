@@ -46,6 +46,13 @@ down={
 "events": []
 }
 
+[layer_names]
+
+2d_physics/layer_1="Boundary"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Block"
+2d_physics/layer_4="Ball"
+
 [rendering]
 
 renderer/rendering_method="mobile"
