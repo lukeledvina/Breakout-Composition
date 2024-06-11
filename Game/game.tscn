@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://yehcwgt8kuur" path="res://Ball/ball.tscn" id="2_lsaa7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6fjk"]
-size = Vector2(10.5, 360)
+size = Vector2(10.25, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dia87"]
 size = Vector2(660, 20)
@@ -18,7 +18,7 @@ position = Vector2(-5, 180)
 shape = SubResource("RectangleShape2D_q6fjk")
 
 [node name="Area2D2" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(645.25, 180)
+position = Vector2(645.125, 180)
 shape = SubResource("RectangleShape2D_q6fjk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]

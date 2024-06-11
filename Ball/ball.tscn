@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://yehcwgt8kuur"]
+[gd_scene load_steps=6 format=3 uid="uid://yehcwgt8kuur"]
 
 [ext_resource type="Script" path="res://Ball/ball.gd" id="1_7h5ci"]
 [ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="1_xph0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13t5c"]
-size = Vector2(14, 12)
+size = Vector2(12, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eneb5"]
+size = Vector2(12, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flcb8"]
+size = Vector2(2, 10)
 
 [node name="Ball" type="Area2D"]
 collision_layer = 8
@@ -18,4 +24,41 @@ texture = ExtResource("1_xph0v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_13t5c")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShapeAreas" type="Node2D" parent="."]
+
+[node name="AreaDown" type="Area2D" parent="CollisionShapeAreas"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAreas/AreaDown"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_eneb5")
+
+[node name="AreaRight" type="Area2D" parent="CollisionShapeAreas"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAreas/AreaRight"]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_flcb8")
+
+[node name="AreaLeft" type="Area2D" parent="CollisionShapeAreas"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAreas/AreaLeft"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_flcb8")
+
+[node name="AreaUp" type="Area2D" parent="CollisionShapeAreas"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShapeAreas/AreaUp"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_eneb5")
+
+[connection signal="body_entered" from="CollisionShapeAreas/AreaDown" to="." method="_on_area_down_body_entered"]
+[connection signal="body_entered" from="CollisionShapeAreas/AreaRight" to="." method="_on_area_right_body_entered"]
+[connection signal="body_entered" from="CollisionShapeAreas/AreaLeft" to="." method="_on_area_left_body_entered"]
+[connection signal="body_entered" from="CollisionShapeAreas/AreaUp" to="." method="_on_area_up_body_entered"]
