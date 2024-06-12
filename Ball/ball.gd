@@ -37,7 +37,7 @@ func _on_area_up_body_entered(body):
 func _on_area_down_body_entered(body):
 	
 	
-	if body.is_in_group("block"):
+	if body.is_in_group("Blocks"):
 		#increment score depending on the type of block ( color )
 		#increase the speed of the ball
 		#destroy the block
@@ -46,7 +46,7 @@ func _on_area_down_body_entered(body):
 		#reflect differently depending on what area of player hit
 		
 		var player_position_x: float = body.position.x
-		var difference: float = clampf((player_position_x - position.x) / player_width, -0.9, 0.9)
+		var difference: float = clampf((player_position_x - position.x) / player_width, -0.95, 0.95)
 		print(difference)
 		direction = Vector2(-difference, (1 - difference)).normalized()
 		

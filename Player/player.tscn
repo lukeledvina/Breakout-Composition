@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="2_pkvai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnpfm"]
-size = Vector2(130, 20)
+size = Vector2(86, 12)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,7 +12,7 @@ collision_mask = 9
 script = ExtResource("1_yxidf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.01563, 0.15625)
+scale = Vector2(0.671875, 0.09375)
 texture = ExtResource("2_pkvai")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

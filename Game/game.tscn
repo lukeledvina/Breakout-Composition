@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb14b3gd7q7jk"]
+[gd_scene load_steps=8 format=3 uid="uid://cb14b3gd7q7jk"]
 
 [ext_resource type="PackedScene" uid="uid://nqbvx1y1htmi" path="res://Player/player.tscn" id="1_gyq8a"]
+[ext_resource type="Script" path="res://Game/game.gd" id="1_t72s7"]
 [ext_resource type="PackedScene" uid="uid://yehcwgt8kuur" path="res://Ball/ball.tscn" id="2_lsaa7"]
+[ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="2_x3as1"]
+[ext_resource type="PackedScene" uid="uid://ls4vajoew24" path="res://Blocks/red_block.tscn" id="4_nlc6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6fjk"]
 size = Vector2(10.25, 360)
@@ -10,6 +13,7 @@ size = Vector2(10.25, 360)
 size = Vector2(660, 20)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_t72s7")
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
@@ -22,15 +26,80 @@ position = Vector2(645.125, 180)
 shape = SubResource("RectangleShape2D_q6fjk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
-position = Vector2(321, -10)
+position = Vector2(320, 10)
 shape = SubResource("RectangleShape2D_dia87")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(321, 370)
 shape = SubResource("RectangleShape2D_dia87")
 
-[node name="Player" parent="." instance=ExtResource("1_gyq8a")]
-position = Vector2(320, 320)
+[node name="TopBoundarySprite" type="Sprite2D" parent="Boundaries"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(320, 10)
+scale = Vector2(6.4375, 0.15625)
+texture = ExtResource("2_x3as1")
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="RedBlock" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(74, 64)
+
+[node name="RedBlock2" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(120, 64)
+
+[node name="RedBlock3" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(166, 64)
+
+[node name="RedBlock4" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(206, 65)
+
+[node name="RedBlock5" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(251, 65)
+
+[node name="RedBlock6" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(295, 66)
+
+[node name="RedBlock7" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(339, 67)
+
+[node name="RedBlock8" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(382, 65)
+
+[node name="RedBlock9" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(428, 63)
+
+[node name="RedBlock16" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(474, 62)
+
+[node name="RedBlock17" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(518, 62)
+
+[node name="RedBlock18" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(561, 62)
+
+[node name="RedBlock19" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(607, 62)
+
+[node name="RedBlock10" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(28, 64)
+
+[node name="RedBlock11" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(28, 80)
+
+[node name="RedBlock12" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(27, 96)
+
+[node name="RedBlock13" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(27, 112)
+
+[node name="RedBlock14" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(27, 128)
+
+[node name="RedBlock15" parent="Blocks" instance=ExtResource("4_nlc6f")]
+position = Vector2(28, 144)
 
 [node name="Ball" parent="." instance=ExtResource("2_lsaa7")]
 position = Vector2(322, 242)
+
+[node name="Player" parent="." instance=ExtResource("1_gyq8a")]
+position = Vector2(320, 320)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbidmciitsnna"]
+
+[ext_resource type="PackedScene" uid="uid://ls4vajoew24" path="res://Blocks/red_block.tscn" id="1_74nua"]
+[ext_resource type="Script" path="res://Blocks/yellow_block.gd" id="2_gbhkm"]
+
+[node name="YellowBlock" instance=ExtResource("1_74nua")]
+script = ExtResource("2_gbhkm")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 0, 1)
