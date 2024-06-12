@@ -19,4 +19,4 @@ texture = ExtResource("2_pkvai")
 shape = SubResource("RectangleShape2D_hnpfm")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(65, 0)
+position = Vector2(43, 0)

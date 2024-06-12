@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tjg6y"]
 size = Vector2(44, 12)
 
-[node name="OrangeBlock" type="Area2D"]
+[node name="OrangeBlock" type="Area2D" groups=["Blocks"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_jvcrd")

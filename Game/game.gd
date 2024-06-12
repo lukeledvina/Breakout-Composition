@@ -10,8 +10,14 @@ extends Node2D
 @onready var blue_block: PackedScene = preload("res://Blocks/blue_block.tscn")
 @onready var violet_block: PackedScene = preload("res://Blocks/violet_block.tscn")
 
+@onready var score_label: Label = $UI/MarginContainer/HBoxContainer/ScoreLabel
+
+var score: int = 0
+
 
 func _ready():
+	$Ball.connect("block_destroyed", _on_block_destroyed)
+	
 	for block in $Blocks.get_children():
 		block.queue_free()
 	
@@ -34,8 +40,12 @@ func _ready():
 			block = violet_block
 		for j in range(14):
 			var new_block = block.instantiate()
-			add_child(new_block)
+			$Blocks.add_child(new_block)
 			new_block.position = Vector2(x_pos, y_pos)
 			x_pos += 45
 		y_pos += 16
+		
+func _on_block_destroyed(block_value):
 	
+	score += block_value
+	score_label.text = "Label: " + str(score)
