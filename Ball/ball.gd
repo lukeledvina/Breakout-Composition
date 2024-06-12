@@ -8,6 +8,7 @@ var direction: Vector2 = Vector2.ZERO
 var initial_speed: int = 100
 var speed: int = initial_speed
 var velocity: Vector2
+var player_width: int = 65
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
@@ -30,6 +31,7 @@ func _on_area_left_body_entered(body):
 	direction.x = -direction.x
 
 func _on_area_up_body_entered(body):
+	print("top")
 	direction.y = -direction.y
 
 func _on_area_down_body_entered(body):
@@ -42,14 +44,14 @@ func _on_area_down_body_entered(body):
 		pass
 	elif body.name == "Player":
 		#reflect differently depending on what area of player hit
-		# get the global position of the ball and the player, depending of their difference, reflect accordingly with a gradient
 		
-		#THIS IS BACKWARDS, THE MORE TO THE EDGES (HIGHER DIFFERENCE), THE LESS Y DIRECTION SHOULD BE AND THE GREATER X DIRECTION SHOULD BE... GET TO THINKING...!
 		var player_position_x: float = body.position.x
-		var difference = player_position_x - position.x
-		direction = Vector2(direction.x, direction.y * difference).normalized()
+		var difference: float = clampf((player_position_x - position.x) / player_width, -0.9, 0.9)
+		print(difference)
+		direction = Vector2(-difference, (1 - difference)).normalized()
 		
 	direction.y = -direction.y
+	print("bottom")
 	
 	
 
