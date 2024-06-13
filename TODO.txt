@@ -1,0 +1,4 @@
+Add lose condition
+Add lives
+Save high score between play sessions
+Add SFX and maybe art

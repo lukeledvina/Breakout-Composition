@@ -48,4 +48,4 @@ func _ready():
 func _on_block_destroyed(block_value):
 	
 	score += block_value
-	score_label.text = "Label: " + str(score)
+	score_label.text = "Score: " + str(score)

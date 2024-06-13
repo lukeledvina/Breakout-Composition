@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udme2"]
 size = Vector2(44, 12)
 
-[node name="RedBlock" type="Area2D" groups=["Blocks"]]
+[node name="RedBlock" type="StaticBody2D" groups=["Blocks"]]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_na4xt")
