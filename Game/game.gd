@@ -14,9 +14,16 @@ extends Node2D
 
 var score: int = 0
 
+#load previous game's high score here
+var high_score: int = 0
+
+var max_lives: int = 3
+var player_lives: int = max_lives
+
 
 func _ready():
 	$Ball.connect("block_destroyed", _on_block_destroyed)
+	$Ball.connect("ball_destroyed", _on_ball_destroyed)
 	
 	for block in $Blocks.get_children():
 		block.queue_free()
@@ -49,3 +56,22 @@ func _on_block_destroyed(block_value):
 	
 	score += block_value
 	score_label.text = "Score: " + str(score)
+	
+func _on_ball_destroyed():
+	player_lives -= 1
+	if player_lives <= 0:
+		#end the game, show score and check if it is higher than high score, if it is then save it as the new high score
+		end_game()
+
+
+	else:
+		$Ball.reset_ball()
+		$Player.reset_player()
+		
+
+func end_game():
+	# blank the screen, say some lose message and then show the score large
+	
+	if score > high_score:
+		#maybe add some fanfare (particle fx)
+		high_score = score

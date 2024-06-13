@@ -29,15 +29,18 @@ shape = SubResource("RectangleShape2D_q6fjk")
 position = Vector2(320, 10)
 shape = SubResource("RectangleShape2D_dia87")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries" groups=["DeathBoundary"]]
-position = Vector2(321, 370)
-shape = SubResource("RectangleShape2D_dia87")
-
 [node name="TopBoundarySprite" type="Sprite2D" parent="Boundaries"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(320, 10)
 scale = Vector2(6.4375, 0.15625)
 texture = ExtResource("2_x3as1")
+
+[node name="DeathBoundary" type="StaticBody2D" parent="." groups=["DeathBoundary"]]
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathBoundary" groups=["DeathBoundary"]]
+position = Vector2(321, 370)
+shape = SubResource("RectangleShape2D_dia87")
 
 [node name="Blocks" type="Node2D" parent="."]
 

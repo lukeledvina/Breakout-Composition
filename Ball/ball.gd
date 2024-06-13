@@ -5,7 +5,7 @@ extends Area2D
 # if colliding with the paddle, depending on which side of the paddle, change velocity accordingly
 
 var direction: Vector2 = Vector2.ZERO
-var initial_speed: int = 500
+var initial_speed: int = 100
 var speed: int = initial_speed
 var max_speed: int = 500
 var speed_increment: int = 5
@@ -18,7 +18,7 @@ signal ball_destroyed()
 func _ready():
 	await get_tree().create_timer(0.5).timeout
 	
-	direction = Vector2(randf_range(-1, 1), randf_range(0.1, 1)).normalized()
+	direction = Vector2(randf_range(-0.9, 0.9), randf_range(0.1, 1)).normalized()
 
 func _physics_process(delta):
 	
@@ -57,12 +57,10 @@ func _on_area_down_body_entered(body):
 		direction = Vector2(-difference, (1 - abs(difference))).normalized()
 		
 	elif body.is_in_group("DeathBoundary"):
-		print("death")
 		emit_signal("ball_destroyed")
-		self.queue_free()
+		queue_free()
 		
 	direction.y = -direction.y
-	
 	
 
 func _on_area_right_body_entered(body):
@@ -72,4 +70,7 @@ func _on_area_right_body_entered(body):
 		body.queue_free()
 		
 	direction.x = -direction.x
+	
 
+func reset_ball():
+	speed = initial_speed
