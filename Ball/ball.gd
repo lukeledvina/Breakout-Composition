@@ -3,6 +3,7 @@ extends Area2D
 # on spawn, pick a random direction and go
 # whenever it collides with the boundaries, reverse velocity of one direction, keep velocity in other direction the same
 # if colliding with the paddle, depending on which side of the paddle, change velocity accordingly
+var initial_pos: Vector2 = Vector2(320, 240)
 
 var direction: Vector2 = Vector2.ZERO
 var initial_speed: int = 100
@@ -16,6 +17,9 @@ signal block_destroyed(score)
 signal ball_destroyed()
 
 func _ready():
+	speed = initial_speed
+	position = initial_pos
+	
 	await get_tree().create_timer(0.5).timeout
 	
 	direction = Vector2(randf_range(-0.9, 0.9), randf_range(0.1, 1)).normalized()
@@ -71,6 +75,3 @@ func _on_area_right_body_entered(body):
 		
 	direction.x = -direction.x
 	
-
-func reset_ball():
-	speed = initial_speed

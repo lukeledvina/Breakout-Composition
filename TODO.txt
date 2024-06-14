@@ -1,9 +1,5 @@
-Add lives, failstate
-failstate where the ball's speed gets reset to its initial speed, blocks stay in the same place, etc...
 Save high score between play sessions
 
-add ui for lives and high score
-
-add a win state (destroyed all blocks), respawn blocks again (reset ball + player similar to death as well, but not lives)
+add some safeguards around the level in case certain bugs happen (ball flying out of bounds, etc.)
 
 Add SFX and maybe art

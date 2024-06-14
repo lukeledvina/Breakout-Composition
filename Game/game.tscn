@@ -102,7 +102,7 @@ position = Vector2(27, 128)
 position = Vector2(28, 144)
 
 [node name="Ball" parent="." instance=ExtResource("2_lsaa7")]
-position = Vector2(322, 242)
+position = Vector2(320, 240)
 
 [node name="Player" parent="." instance=ExtResource("1_gyq8a")]
 position = Vector2(320, 320)
@@ -119,12 +119,22 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 290
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = -20
+theme_override_constants/margin_right = 50
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="LivesLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "LIVES: 3"
 
 [node name="ScoreLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "SCORE: 0"
+
+[node name="HighScoreLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "HIGH SCORE: 0"
