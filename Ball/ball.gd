@@ -1,8 +1,7 @@
 extends Area2D
 
-# on spawn, pick a random direction and go
-# whenever it collides with the boundaries, reverse velocity of one direction, keep velocity in other direction the same
-# if colliding with the paddle, depending on which side of the paddle, change velocity accordingly
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+
 var initial_pos: Vector2 = Vector2(320, 240)
 
 var direction: Vector2 = Vector2.ZERO
@@ -48,6 +47,7 @@ func _on_area_left_body_entered(body):
 		pass
 	else:
 		direction.x = -direction.x
+	audio_player.play()
 
 
 func _on_area_up_body_entered(body):
@@ -62,6 +62,7 @@ func _on_area_up_body_entered(body):
 		pass
 	else:
 		direction.y = -direction.y
+	audio_player.play()
 
 func _on_area_down_body_entered(body):
 	if body.is_in_group("Blocks") && can_destroy:
@@ -85,6 +86,7 @@ func _on_area_down_body_entered(body):
 		queue_free()
 	else:
 		direction.y = -direction.y
+	audio_player.play()
 	
 
 func _on_area_right_body_entered(body):
@@ -99,6 +101,7 @@ func _on_area_right_body_entered(body):
 		pass
 	else:
 		direction.x = -direction.x
+	audio_player.play()
 
 
 

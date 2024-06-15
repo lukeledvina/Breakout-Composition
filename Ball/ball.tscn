@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://yehcwgt8kuur"]
+[gd_scene load_steps=7 format=3 uid="uid://yehcwgt8kuur"]
 
 [ext_resource type="Script" path="res://Ball/ball.gd" id="1_7h5ci"]
 [ext_resource type="Texture2D" uid="uid://c8to427fvrqp7" path="res://white_square.png" id="2_q26di"]
+[ext_resource type="AudioStream" uid="uid://b14uf7vj83iuv" path="res://laserShoot.wav" id="3_03egv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13t5c"]
 size = Vector2(12, 10)
@@ -61,6 +62,9 @@ shape = SubResource("RectangleShape2D_eneb5")
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_03egv")
 
 [connection signal="body_entered" from="CollisionShapeAreas/AreaDown" to="." method="_on_area_down_body_entered"]
 [connection signal="body_entered" from="CollisionShapeAreas/AreaRight" to="." method="_on_area_right_body_entered"]
