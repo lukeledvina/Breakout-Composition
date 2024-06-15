@@ -1,8 +1,5 @@
 extends Node2D
 
-# programatically spawn the blocks at each start of game
-# keep track of score?
-# send a signal from the ball to this script whenever a block is destroyed, and accordingly increment the score to be sent to the UI
 @onready var red_block: PackedScene = preload("res://Blocks/red_block.tscn")
 @onready var orange_block: PackedScene = preload("res://Blocks/orange_block.tscn")
 @onready var yellow_block: PackedScene = preload("res://Blocks/yellow_block.tscn")
@@ -10,9 +7,9 @@ extends Node2D
 @onready var blue_block: PackedScene = preload("res://Blocks/blue_block.tscn")
 @onready var violet_block: PackedScene = preload("res://Blocks/violet_block.tscn")
 
-@onready var score_label: Label = $UI/MarginContainer/HBoxContainer/ScoreLabel
-@onready var lives_label: Label = $UI/MarginContainer/HBoxContainer/LivesLabel
-@onready var high_score_label: Label = $UI/MarginContainer/HBoxContainer/HighScoreLabel
+@onready var score_label: Label = $UICanvas/MarginContainer/HBoxContainer/ScoreLabel
+@onready var lives_label: Label = $UICanvas/MarginContainer/HBoxContainer/LivesLabel
+@onready var high_score_label: Label = $UICanvas/MarginContainer/HBoxContainer/HighScoreLabel
 
 @onready var ball_scene: PackedScene = preload("res://Ball/ball.tscn")
 
@@ -23,6 +20,8 @@ var high_score: int = 0
 
 var max_lives: int = 3
 var player_lives: int = max_lives
+
+var end_of_game: bool = false
 
 
 func _ready():
@@ -38,6 +37,13 @@ func _ready():
 	
 	spawn_blocks()
 
+		
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed:
+			if end_of_game:
+				get_tree().quit()
+		
 		
 func _on_block_destroyed(block_value):
 	
@@ -61,22 +67,28 @@ func _on_ball_destroyed():
 		
 
 func end_game():
-	# blank the screen, say some lose message and then show the score large
-	
+
 	if score > high_score:
 		#maybe add some fanfare (particle fx)
 		high_score = score
 		high_score_label.text = "High Score: " + str(high_score)
 		$SaveGameSystem.save_game(self)
-		#save high score to disk
-		
-		# await player input, on input close the game, or just stay on the score until they close the game
+	
+	for node in self.get_children():
+		node.visible = false
+	
+	$UICanvas.visible = true
+	$UICanvas/MarginContainer.visible = false
+	$UICanvas/EndGameUI.visible = true
+	$UICanvas/EndGameUI/ScoreLabel.text = "SCORE: " + str(score)
+	$UICanvas/EndGameUI/HighScoreLabel.text = "HIGH SCORE: " + str(high_score)
+	end_of_game = true
 
 
 func spawn_blocks():
 	var y_pos: int = 64
 	var x_pos: int = 26
-	for i in range(1): #6
+	for i in range(6): #6
 		x_pos = 26
 		var block: PackedScene
 		if i == 0:
@@ -91,7 +103,7 @@ func spawn_blocks():
 			block = blue_block
 		elif i == 5:
 			block = violet_block
-		for j in range(1): # 14
+		for j in range(14): # 14
 			var new_block = block.instantiate()
 			$Blocks.add_child(new_block)
 			new_block.position = Vector2(x_pos, y_pos)

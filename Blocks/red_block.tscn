@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ls4vajoew24"]
 
-[ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="1_i0lfb"]
 [ext_resource type="Script" path="res://Blocks/red_block.gd" id="1_na4xt"]
+[ext_resource type="Texture2D" uid="uid://c8to427fvrqp7" path="res://white_square.png" id="2_ybd2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udme2"]
 size = Vector2(44, 12)
@@ -13,8 +13,8 @@ script = ExtResource("1_na4xt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.34375, 0.09375)
-texture = ExtResource("1_i0lfb")
+scale = Vector2(2.75, 0.75)
+texture = ExtResource("2_ybd2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_udme2")
