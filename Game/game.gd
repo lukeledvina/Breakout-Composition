@@ -29,6 +29,10 @@ func _ready():
 	$Ball.connect("block_destroyed", _on_block_destroyed)
 	$Ball.connect("ball_destroyed", _on_ball_destroyed)
 	
+	var high_score_data = $SaveGameSystem.load_game()
+	high_score = high_score_data["high_score"]
+	high_score_label.text = "High Score: " + str(high_score)
+	
 	for block in $Blocks.get_children():
 		block.queue_free()
 	
@@ -62,6 +66,7 @@ func end_game():
 		#maybe add some fanfare (particle fx)
 		high_score = score
 		high_score_label.text = "High Score: " + str(high_score)
+		$SaveGameSystem.save_game(self)
 		#save high score to disk
 		
 		# await player input, on input close the game, or just stay on the score until they close the game
@@ -99,3 +104,11 @@ func reset_game():
 	new_ball.connect("ball_destroyed", _on_ball_destroyed)
 	$Player.reset_player()
 		
+
+func save():
+	var save_dict = {
+		"high_score": high_score
+	}
+	return save_dict
+	
+

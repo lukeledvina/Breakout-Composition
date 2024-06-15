@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cb14b3gd7q7jk"]
+[gd_scene load_steps=9 format=3 uid="uid://cb14b3gd7q7jk"]
 
 [ext_resource type="PackedScene" uid="uid://nqbvx1y1htmi" path="res://Player/player.tscn" id="1_gyq8a"]
 [ext_resource type="Script" path="res://Game/game.gd" id="1_t72s7"]
 [ext_resource type="PackedScene" uid="uid://yehcwgt8kuur" path="res://Ball/ball.tscn" id="2_lsaa7"]
 [ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="2_x3as1"]
 [ext_resource type="PackedScene" uid="uid://ls4vajoew24" path="res://Blocks/red_block.tscn" id="4_nlc6f"]
+[ext_resource type="Script" path="res://Game/SaveGameSystem.gd" id="6_ewcpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6fjk"]
 size = Vector2(10.25, 360)
@@ -138,3 +139,6 @@ text = "SCORE: 0"
 [node name="HighScoreLabel" type="Label" parent="UI/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "HIGH SCORE: 0"
+
+[node name="SaveGameSystem" type="Node" parent="."]
+script = ExtResource("6_ewcpx")
