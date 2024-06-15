@@ -37,15 +37,16 @@ func _ready():
 		block.queue_free()
 	
 	spawn_blocks()
+
 		
 func _on_block_destroyed(block_value):
 	
 	score += block_value
 	score_label.text = "Score: " + str(score)
-	
-	if $Blocks.get_child_count() <= 0:
+	if $Blocks.get_child_count() <= 1:
+		$Ball.queue_free()
 		reset_game()
-		spawn_blocks()
+		call_deferred("spawn_blocks")
 	
 func _on_ball_destroyed():
 	player_lives -= 1
@@ -75,7 +76,7 @@ func end_game():
 func spawn_blocks():
 	var y_pos: int = 64
 	var x_pos: int = 26
-	for i in range(6):
+	for i in range(1): #6
 		x_pos = 26
 		var block: PackedScene
 		if i == 0:
@@ -90,7 +91,7 @@ func spawn_blocks():
 			block = blue_block
 		elif i == 5:
 			block = violet_block
-		for j in range(14):
+		for j in range(1): # 14
 			var new_block = block.instantiate()
 			$Blocks.add_child(new_block)
 			new_block.position = Vector2(x_pos, y_pos)

@@ -20,7 +20,7 @@ func _ready():
 	speed = initial_speed
 	position = initial_pos
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	
 	direction = Vector2(randf_range(-0.9, 0.9), randf_range(0.1, 1)).normalized()
 

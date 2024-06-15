@@ -2,22 +2,22 @@ extends Node
 
 
 func save_game(node):
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 		
 	var node_data = node.call("save")
 	
 	var json_string = JSON.stringify(node_data)
 		
-	save_game.store_line(json_string)
+	save_game_file.store_line(json_string)
 
 
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
 		return
 		
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
+	var save_game_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_game_file.get_position() < save_game_file.get_length():
+		var json_string = save_game_file.get_line()
 
 		# Creates the helper class to interact with JSON
 		var json = JSON.new()
@@ -30,7 +30,5 @@ func load_game():
 
 		# Get the data from the JSON object
 		var node_data = json.get_data()
-		
-		print(node_data)
 		
 		return node_data

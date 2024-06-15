@@ -1,5 +1,9 @@
-Save high score between play sessions
+Add Lose Screen, with animation for high score. ( if possible )
+
+Add SFX 
+
+
+
+art?
 
 add some safeguards around the level in case certain bugs happen (ball flying out of bounds, etc.)
-
-Add SFX and maybe art
