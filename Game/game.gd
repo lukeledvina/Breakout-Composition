@@ -60,8 +60,6 @@ func _on_ball_destroyed():
 	if player_lives <= 0:
 		#end the game, show score and check if it is higher than high score, if it is then save it as the new high score
 		end_game()
-
-
 	else:
 		reset_game()
 		
@@ -82,6 +80,7 @@ func end_game():
 	$UICanvas/EndGameUI.visible = true
 	$UICanvas/EndGameUI/ScoreLabel.text = "SCORE: " + str(score)
 	$UICanvas/EndGameUI/HighScoreLabel.text = "HIGH SCORE: " + str(high_score)
+	await get_tree().create_timer(1).timeout
 	end_of_game = true
 
 

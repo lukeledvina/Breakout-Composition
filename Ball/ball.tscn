@@ -7,10 +7,10 @@
 size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eneb5"]
-size = Vector2(12, 1.3125)
+size = Vector2(2, 1.3125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_flcb8"]
-size = Vector2(1, 10)
+size = Vector2(1, 2)
 
 [node name="Ball" type="Area2D"]
 collision_layer = 8
@@ -58,7 +58,12 @@ collision_mask = 7
 position = Vector2(0, -5.6875)
 shape = SubResource("RectangleShape2D_eneb5")
 
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
 [connection signal="body_entered" from="CollisionShapeAreas/AreaDown" to="." method="_on_area_down_body_entered"]
 [connection signal="body_entered" from="CollisionShapeAreas/AreaRight" to="." method="_on_area_right_body_entered"]
 [connection signal="body_entered" from="CollisionShapeAreas/AreaLeft" to="." method="_on_area_left_body_entered"]
 [connection signal="body_entered" from="CollisionShapeAreas/AreaUp" to="." method="_on_area_up_body_entered"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb14b3gd7q7jk"]
+[gd_scene load_steps=8 format=3 uid="uid://cb14b3gd7q7jk"]
 
 [ext_resource type="PackedScene" uid="uid://nqbvx1y1htmi" path="res://Player/player.tscn" id="1_gyq8a"]
 [ext_resource type="Script" path="res://Game/game.gd" id="1_t72s7"]
 [ext_resource type="PackedScene" uid="uid://yehcwgt8kuur" path="res://Ball/ball.tscn" id="2_lsaa7"]
-[ext_resource type="Texture2D" uid="uid://du67b6ygy0lc7" path="res://icon.svg" id="2_x3as1"]
 [ext_resource type="PackedScene" uid="uid://ls4vajoew24" path="res://Blocks/red_block.tscn" id="4_nlc6f"]
 [ext_resource type="Script" path="res://Game/SaveGameSystem.gd" id="6_ewcpx"]
 
@@ -29,12 +28,6 @@ shape = SubResource("RectangleShape2D_q6fjk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(320, 10)
 shape = SubResource("RectangleShape2D_dia87")
-
-[node name="TopBoundarySprite" type="Sprite2D" parent="Boundaries"]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(320, 10)
-scale = Vector2(6.4375, 0.15625)
-texture = ExtResource("2_x3as1")
 
 [node name="DeathBoundary" type="StaticBody2D" parent="." groups=["DeathBoundary"]]
 collision_mask = 8
