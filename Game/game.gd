@@ -25,11 +25,10 @@ var end_of_game: bool = false
 
 
 func _ready():
+
 	$Ball.connect("block_destroyed", _on_block_destroyed)
 	$Ball.connect("ball_destroyed", _on_ball_destroyed)
-	
 	var high_score_data = $SaveGameSystem.load_game()
-	high_score = high_score_data["high_score"]
 	high_score_label.text = "High Score: " + str(high_score)
 	
 	for block in $Blocks.get_children():
@@ -119,7 +118,7 @@ func reset_game():
 
 func save():
 	var save_dict = {
-		"high_score": high_score
+		"high_score": score
 	}
 	return save_dict
 	

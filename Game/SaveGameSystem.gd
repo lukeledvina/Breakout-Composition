@@ -32,3 +32,5 @@ func load_game():
 		var node_data = json.get_data()
 		
 		return node_data
+		
+	
